@@ -726,11 +726,44 @@ planSelect.addEventListener('change', ()=>{
 });
 
 /* ---------------- Views ---------------- */
+const VIEW_URLS = {
+  landing: '',
+  form: '#/cadastro',
+  thanks: '#/obrigado',
+};
+
 function showView(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById('view-' + name).classList.add('active');
   window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+
+  // Muda a URL (via hash, sem recarregar a página e sem depender do servidor)
+  // para que o GA4/GTM consiga identificar essa etapa como uma página distinta.
+  const hash = VIEW_URLS[name] || '';
+  const newUrl = window.location.pathname + window.location.search + hash;
+  history.pushState({view: name}, '', newUrl);
+
+  // Avisa o Google Tag Manager (já instalado nesta página) que uma "página" nova foi vista.
+  // Configure em Tag Manager um gatilho de "Evento personalizado" chamado "virtual_page_view"
+  // (ou um gatilho de "Alteração de histórico") para disparar a conversão no GA4 quando
+  // page_path for "/obrigado".
+  if(window.dataLayer){
+    window.dataLayer.push({
+      event: 'virtual_page_view',
+      page_path: hash ? hash.replace('#', '') : '/',
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }
 }
+
+// Se alguém acessar/recarregar a página direto em "#/obrigado", mostra a tela certa.
+window.addEventListener('DOMContentLoaded', ()=>{
+  if(window.location.hash === '#/obrigado'){
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById('view-thanks').classList.add('active');
+  }
+});
 
 /* ---------------- Form submit ---------------- */
 document.getElementById('lead-form').addEventListener('submit', async function(e){
