@@ -794,6 +794,14 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
       throw new Error(result.message || 'Não foi possível enviar sua solicitação.');
     }
 
+    const selectedPlan = planSelect.value;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'generate_lead',
+      lead_source: 'Landing Brisanet',
+      plano: selectedPlan
+    });
+
     this.reset();
     showView('thanks');
   } catch(error) {
