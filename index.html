@@ -195,6 +195,44 @@ section{padding:84px 0;}
 .plan-price span{font-size:13px; font-weight:600; color:var(--gray-500);}
 .plan-card .btn{margin-top:auto;}
 
+/* ---------- Planos Empresariais (bloco aditivo e isolado) ---------- */
+.planos-empresariais-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+@media(max-width:1100px){.planos-empresariais-grid{grid-template-columns:repeat(2,1fr);}}
+.planos-empresariais-card{
+  background:var(--white); border:1px solid var(--gray-300); border-radius:var(--radius);
+  padding:26px 22px; text-align:left; position:relative; display:flex; flex-direction:column; gap:14px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.planos-empresariais-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.planos-empresariais-card.featured{
+  border-color:var(--orange); background:linear-gradient(180deg,var(--orange-light), var(--white) 55%);
+  box-shadow:0 22px 50px -18px rgba(255,90,31,.4);
+}
+.planos-empresariais-badge{
+  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+  background:var(--orange); color:var(--white); font-size:11.5px; font-weight:700;
+  padding:5px 14px; border-radius:100px; white-space:nowrap; box-shadow:0 8px 16px -6px rgba(255,90,31,.6);
+}
+.planos-empresariais-name{font-family:'Sora',sans-serif; font-weight:800; font-size:18px; color:var(--graphite);}
+.planos-empresariais-price{font-size:27px; font-weight:800; font-family:'Sora',sans-serif; color:var(--graphite);}
+.planos-empresariais-price span{font-size:13px; font-weight:600; color:var(--gray-500);}
+.planos-empresariais-features{list-style:none; display:flex; flex-direction:column; gap:9px; font-size:13.5px; color:var(--gray-700); flex-grow:1;}
+.planos-empresariais-features li{display:flex; align-items:center; gap:8px;}
+.planos-empresariais-features li svg{flex-shrink:0;}
+.planos-empresariais-button{margin-top:auto;}
+@media(max-width:640px){
+  .planos-empresariais-grid{
+    display:flex; gap:16px; overflow-x:auto;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scroll-behavior:smooth; overscroll-behavior-x:contain;
+    margin:0 -24px; padding:8px 11vw 10px; scrollbar-width:none;
+  }
+  .planos-empresariais-grid::-webkit-scrollbar{display:none; height:0;}
+  .planos-empresariais-card{
+    flex:0 0 78vw; max-width:340px; scroll-snap-align:center; scroll-snap-stop:always;
+  }
+  .planos-empresariais-card.featured{flex-basis:82vw;}
+}
+
 /* ---------- Streaming tabs ---------- */
 .tabs{display:flex; gap:8px; overflow-x:auto; padding-bottom:6px; margin-bottom:34px; scrollbar-width:thin;}
 .tab-btn{
@@ -381,6 +419,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="tabs" id="bundle-tabs"></div>
       <div id="bundle-panels"></div>
+    </div>
+  </section>
+
+  <!-- PLANOS EMPRESARIAIS (bloco aditivo e isolado, classes com prefixo planos-empresariais-) -->
+  <section id="planos-empresariais" class="planos-empresariais-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Para o seu negócio</span>
+        <h2>Planos Empresariais</h2>
+        <p>Internet fibra de alta performance para levar sua empresa mais longe.</p>
+      </div>
+      <div class="planos-empresariais-grid" id="planos-empresariais-grid">
+
+        <div class="planos-empresariais-card">
+          <div class="planos-empresariais-name">Plano Empresarial 350 Mega</div>
+          <div class="planos-empresariais-price">R$ 89,90<span>/mês</span></div>
+          <ul class="planos-empresariais-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalação inclusa</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100% fibra óptica</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wi-Fi de alta performance</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Download de 350 Mbps</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload de 175 Mbps</li>
+          </ul>
+          <button class="btn btn-outline btn-full planos-empresariais-button" data-plan="Plano Empresarial 350 Mega — R$ 89,90/mês">Aproveitar oferta</button>
+        </div>
+
+        <div class="planos-empresariais-card">
+          <div class="planos-empresariais-name">Plano Empresarial 500 Mega</div>
+          <div class="planos-empresariais-price">R$ 99,90<span>/mês</span></div>
+          <ul class="planos-empresariais-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalação inclusa</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100% fibra óptica</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wi-Fi de alta performance</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Download de 500 Mbps</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload de 250 Mbps</li>
+          </ul>
+          <button class="btn btn-outline btn-full planos-empresariais-button" data-plan="Plano Empresarial 500 Mega — R$ 99,90/mês">Aproveitar oferta</button>
+        </div>
+
+        <div class="planos-empresariais-card">
+          <div class="planos-empresariais-name">Plano Empresarial 700 Mega</div>
+          <div class="planos-empresariais-price">R$ 119,99<span>/mês</span></div>
+          <ul class="planos-empresariais-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalação inclusa</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100% fibra óptica</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wi-Fi de alta performance</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Download de 700 Mbps</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload de 350 Mbps</li>
+          </ul>
+          <button class="btn btn-outline btn-full planos-empresariais-button" data-plan="Plano Empresarial 700 Mega — R$ 119,99/mês">Aproveitar oferta</button>
+        </div>
+
+        <div class="planos-empresariais-card featured">
+          <span class="planos-empresariais-badge">Melhor oferta</span>
+          <div class="planos-empresariais-name">Plano Empresarial 1 Giga</div>
+          <div class="planos-empresariais-price">R$ 159,99<span>/mês</span></div>
+          <ul class="planos-empresariais-features">
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalação inclusa</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>100% fibra óptica</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wi-Fi de alta performance</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Download de 1 Giga</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M20 6 9 17l-5-5" stroke="#FF5A1F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload de 500 Mbps</li>
+          </ul>
+          <button class="btn btn-primary btn-full planos-empresariais-button" data-plan="Plano Empresarial 1 Giga — R$ 159,99/mês">Aproveitar oferta</button>
+        </div>
+
+      </div>
+      <div class="carousel-dots" id="dots-empresariais"></div>
     </div>
   </section>
 
@@ -593,6 +699,13 @@ const bundles = [
   ]},
 ];
 
+const businessPlans = [
+  {speed:"350 Mega", price:"89,90"},
+  {speed:"500 Mega", price:"99,90"},
+  {speed:"700 Mega", price:"119,99"},
+  {speed:"1 Giga", price:"159,99", featured:true},
+];
+
 /* ---------------- Carrossel mobile: swipe/snap + indicadores (dots) ---------------- */
 function setupCarousel(track, dotsContainer){
   if(!track || !dotsContainer) return;
@@ -706,11 +819,19 @@ const planSelect = document.getElementById('f-plano');
 function rebuildPlanSelect(selected){
   const all = [
     ...internetPlans.map(p=>`Internet ${p.speed} — R$ ${p.price}/mês`),
-    ...bundles.flatMap(b=>b.plans.map(p=>`Internet + ${b.label} ${p.speed} — R$ ${p.price}/mês`))
+    ...bundles.flatMap(b=>b.plans.map(p=>`Internet + ${b.label} ${p.speed} — R$ ${p.price}/mês`)),
+    ...businessPlans.map(p=>`Plano Empresarial ${p.speed} — R$ ${p.price}/mês`)
   ];
   planSelect.innerHTML = all.map(v=>`<option value="${v}" ${v===selected?'selected':''}>${v}</option>`).join('');
 }
 rebuildPlanSelect(internetPlans[1] ? `Internet ${internetPlans[1].speed} — R$ ${internetPlans[1].price}/mês` : '');
+
+/* ---------------- Planos Empresariais: carrossel mobile (reaproveita setupCarousel já existente) ---------------- */
+const gridEmpresariais = document.getElementById('planos-empresariais-grid');
+if(gridEmpresariais){
+  setupCarousel(gridEmpresariais, document.getElementById('dots-empresariais'));
+  allCarouselTracks.push(gridEmpresariais);
+}
 
 document.addEventListener('click', (e)=>{
   const btn = e.target.closest('[data-plan]');
@@ -825,6 +946,239 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }, 3200);
+})();
+</script>
+
+<!-- ==========================================================================
+     BRISA POPUP — bloco 100% aditivo e isolado (pop-up de navegação rápida)
+     - Não altera nenhum elemento, script, id ou classe já existentes.
+     - Não dispara nem duplica nenhum evento de rastreamento (GTM/GA4/Clarity).
+     - Todos os seletores usam o prefixo "brisa-popup-".
+     ========================================================================== -->
+<style>
+  .brisa-popup-overlay{
+    position:fixed; inset:0; z-index:2000;
+    background:rgba(20,22,26,.55);
+    backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center;
+    padding:20px;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+  .brisa-popup-overlay.brisa-popup-open{
+    opacity:1; visibility:visible; pointer-events:auto;
+  }
+  .brisa-popup-modal{
+    background:#FFFFFF;
+    border-radius:20px;
+    box-shadow:0 24px 60px -16px rgba(20,22,26,.45);
+    width:100%; max-width:640px;
+    max-height:90vh; overflow-y:auto;
+    padding:32px 28px 28px;
+    position:relative;
+    transform:scale(.92) translateY(12px);
+    transition:transform .3s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .brisa-popup-overlay.brisa-popup-open .brisa-popup-modal{
+    transform:scale(1) translateY(0);
+  }
+  .brisa-popup-close{
+    position:absolute; top:16px; right:16px;
+    width:36px; height:36px; border-radius:50%;
+    background:#F5F6F8; border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    color:#14161A;
+    transition:background .15s ease;
+  }
+  .brisa-popup-close:hover{background:#C7CBD3;}
+  .brisa-popup-header{text-align:center; margin-bottom:22px;}
+  .brisa-popup-logo{height:26px; width:auto; margin:0 auto 14px; display:block;}
+  .brisa-popup-title{font-family:'Sora',sans-serif; font-size:22px; font-weight:700; color:#14161A; margin:0 0 6px;}
+  .brisa-popup-subtitle{font-size:14px; color:#767B87; margin:0;}
+  .brisa-popup-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .brisa-popup-card{
+    display:flex; flex-direction:column; align-items:flex-start; gap:10px;
+    border:1px solid #C7CBD3; border-radius:14px;
+    padding:18px; text-decoration:none; color:inherit;
+    transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+    background:#FFFFFF; cursor:pointer;
+  }
+  .brisa-popup-card:hover{border-color:#FF5A1F; transform:translateY(-2px); box-shadow:0 10px 24px -12px rgba(20,22,26,.2);}
+  .brisa-popup-card-centered{grid-column:1 / -1; width:100%; max-width:calc(50% - 7px); margin:0 auto;}
+  .brisa-popup-icon{width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .brisa-popup-icon svg{width:20px; height:20px;}
+  .brisa-popup-icon img{width:20px; height:20px;}
+  .brisa-popup-icon-whatsapp{background:#25D366;}
+  .brisa-popup-icon-planos{background:#FF5A1F;}
+  .brisa-popup-icon-combos{background:#FF5A1F;}
+  .brisa-popup-icon-empresariais{background:#14161A;}
+  .brisa-popup-card-text{display:flex; flex-direction:column; gap:3px;}
+  .brisa-popup-card-text strong{font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:#14161A;}
+  .brisa-popup-card-text span{font-size:13px; color:#767B87; line-height:1.4;}
+  body.brisa-popup-lock{overflow:hidden;}
+  @media(max-width:640px){
+    .brisa-popup-grid{grid-template-columns:1fr;}
+    .brisa-popup-card-centered{max-width:100%;}
+    .brisa-popup-modal{padding:26px 20px 22px; max-width:calc(100vw - 24px); width:calc(100vw - 24px);}
+    .brisa-popup-overlay{padding:12px;}
+  }
+</style>
+
+<div id="brisa-popup-overlay" class="brisa-popup-overlay">
+  <div id="brisa-popup-modal" class="brisa-popup-modal" role="dialog" aria-modal="true" aria-labelledby="brisa-popup-title" aria-describedby="brisa-popup-subtitle">
+    <button type="button" id="brisa-popup-fechar" class="brisa-popup-close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="brisa-popup-header">
+      <img id="brisa-popup-logo" class="brisa-popup-logo" src="" alt="Brisanet">
+      <h2 id="brisa-popup-title" class="brisa-popup-title">Como podemos te ajudar?</h2>
+      <p id="brisa-popup-subtitle" class="brisa-popup-subtitle">Escolha uma opção abaixo</p>
+    </div>
+    <div class="brisa-popup-grid">
+      <a href="https://wa.me/5579996369106" id="brisa-popup-whatsapp" class="brisa-popup-card" target="_blank" rel="noopener">
+        <span class="brisa-popup-icon brisa-popup-icon-whatsapp"><img id="brisa-popup-whatsapp-icon" src="" alt=""></span>
+        <span class="brisa-popup-card-text">
+          <strong>Compre pelo WhatsApp</strong>
+          <span>Consulte a cobertura e finalize sua contratação.</span>
+        </span>
+      </a>
+      <a href="#planos" id="brisa-popup-planos" class="brisa-popup-card">
+        <span class="brisa-popup-icon brisa-popup-icon-planos"><svg viewBox="0 0 24 24" fill="none"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5" fill="white"/></svg></span>
+        <span class="brisa-popup-card-text">
+          <strong>Planos residenciais</strong>
+          <span>Conheça os planos de internet fibra para sua casa.</span>
+        </span>
+      </a>
+      <a href="#streaming" id="brisa-popup-combos" class="brisa-popup-card">
+        <span class="brisa-popup-icon brisa-popup-icon-combos"><svg viewBox="0 0 24 24" fill="none"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5" fill="white"/></svg></span>
+        <span class="brisa-popup-card-text">
+          <strong>Nossos combos</strong>
+          <span>Internet fibra com plataformas de streaming e entretenimento.</span>
+        </span>
+      </a>
+      <a href="#planos-empresariais" id="brisa-popup-empresariais" class="brisa-popup-card">
+        <span class="brisa-popup-icon brisa-popup-icon-empresariais"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="brisa-popup-card-text">
+          <strong>Planos Empresariais</strong>
+          <span>Soluções de internet fibra para o seu negócio.</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var SESSION_KEY = 'brisaPopupShown';
+  var overlay = document.getElementById('brisa-popup-overlay');
+  if(!overlay) return;
+
+  var modal = document.getElementById('brisa-popup-modal');
+  var closeBtn = document.getElementById('brisa-popup-fechar');
+  var whatsappLink = document.getElementById('brisa-popup-whatsapp');
+  var whatsappIconImg = document.getElementById('brisa-popup-whatsapp-icon');
+  var planosLink = document.getElementById('brisa-popup-planos');
+  var combosLink = document.getElementById('brisa-popup-combos');
+  var empresariaisLink = document.getElementById('brisa-popup-empresariais');
+  var logoImg = document.getElementById('brisa-popup-logo');
+  var lastFocusedEl = null;
+
+  // Reaproveita os mesmos assets (logo e ícone do WhatsApp) já usados na página,
+  // sem duplicar imagens nem criar nenhum recurso novo.
+  var existingLogo = document.querySelector('.header-logo img');
+  if(existingLogo){ logoImg.src = existingLogo.src; }
+  var existingWaIcon = document.querySelector('.wa-icon');
+  if(existingWaIcon){ whatsappIconImg.src = existingWaIcon.src; }
+
+  // Reaproveita o mesmo padrão de link do WhatsApp já usado na página
+  // (mesma função waLink e mesmo WHATSAPP_NUMBER já definidos no script principal).
+  try{
+    if(typeof waLink === 'function'){
+      whatsappLink.href = waLink('Olá! Quero consultar a cobertura no meu endereço e finalizar a contratação de um plano Brisanet.');
+    } else if(typeof WHATSAPP_NUMBER !== 'undefined'){
+      whatsappLink.href = 'https://wa.me/' + WHATSAPP_NUMBER;
+    }
+  } catch(err){ /* mantém o href estático já definido no HTML como fallback */ }
+
+  function onKeydown(e){
+    if(e.key === 'Escape' || e.keyCode === 27){
+      closePopup();
+      return;
+    }
+    if(e.key === 'Tab' || e.keyCode === 9){
+      var focusable = modal.querySelectorAll('a[href], button:not([disabled])');
+      if(!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if(e.shiftKey && document.activeElement === first){
+        e.preventDefault();
+        last.focus();
+      } else if(!e.shiftKey && document.activeElement === last){
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  function openPopup(){
+    lastFocusedEl = document.activeElement;
+    overlay.classList.add('brisa-popup-open');
+    document.body.classList.add('brisa-popup-lock');
+    document.addEventListener('keydown', onKeydown);
+    closeBtn.focus();
+  }
+
+  function closePopup(){
+    overlay.classList.remove('brisa-popup-open');
+    document.body.classList.remove('brisa-popup-lock');
+    document.removeEventListener('keydown', onKeydown);
+    if(lastFocusedEl && typeof lastFocusedEl.focus === 'function'){
+      lastFocusedEl.focus();
+    }
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay){ closePopup(); }
+  });
+
+  planosLink.addEventListener('click', function(e){
+    e.preventDefault();
+    closePopup();
+    var target = document.getElementById('planos');
+    if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+
+  combosLink.addEventListener('click', function(e){
+    e.preventDefault();
+    closePopup();
+    var target = document.getElementById('streaming');
+    if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+
+  empresariaisLink.addEventListener('click', function(e){
+    e.preventDefault();
+    closePopup();
+    var target = document.getElementById('planos-empresariais');
+    if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+
+  // O card do WhatsApp apenas segue o link (target="_blank"), sem nenhuma
+  // lógica extra e sem disparar nenhum evento de rastreamento manualmente.
+
+  try{
+    if(!sessionStorage.getItem(SESSION_KEY)){
+      setTimeout(function(){
+        openPopup();
+        try{ sessionStorage.setItem(SESSION_KEY, '1'); }catch(e){}
+      }, 2000);
+    }
+  } catch(err){
+    // sessionStorage indisponível — o pop-up simplesmente não abre automaticamente,
+    // sem gerar erro nem afetar o restante da página.
+  }
 })();
 </script>
 </body>
